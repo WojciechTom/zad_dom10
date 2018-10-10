@@ -18,7 +18,16 @@ public class PersonTest {
         String pesel = scan.nextLine();
         scan.nextLine();
 
-        Person p1 = new Person(imie, nazwisko, wiek, pesel);
+        Person p1 = null;
+        try {
+            p1 = new Person(imie, nazwisko, wiek, pesel);
+        } catch (NameUnderfinedException e) {
+            e.printStackTrace();
+            System.out.println("Złe imię bądź nazwisko");;
+        } catch (IncorrectAgeException e) {
+            e.printStackTrace();
+            System.out.println("Wiek nie może być mniejszy niż 1");;
+        }
 
         System.out.println("Utworzona osoba to: \n" + p1.getFirstName() + " " + p1.getLastName() + ", Wiek: " + p1.getAge() + ", Numer Pesel: " + p1.getPesel());
     }

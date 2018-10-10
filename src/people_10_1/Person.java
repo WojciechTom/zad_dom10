@@ -6,7 +6,7 @@ public class Person {
     public int age;
     public String pesel;
 
-    public Person(String firstName, String lastName, int age, String pesel) {
+    public Person(String firstName, String lastName, int age, String pesel) throws NameUnderfinedException, IncorrectAgeException {
         setFirstName(firstName);
         setLastName(lastName);
         setAge(age);
@@ -17,7 +17,7 @@ public class Person {
         return firstName;
     }
 
-    private void setFirstName(String firstName) {
+    private void setFirstName(String firstName) throws NameUnderfinedException {
         if ((firstName.length() < 2) || firstName == null) {
             throw new NameUnderfinedException("Za krótkie imię");
         } else {
@@ -29,7 +29,7 @@ public class Person {
         return lastName;
     }
 
-    private void setLastName(String lastName) {
+    private void setLastName(String lastName) throws NameUnderfinedException {
         if ((lastName.length() < 2) || lastName == null) {
             throw new NameUnderfinedException("Za krótkie nazwisko");
         } else {
@@ -41,7 +41,7 @@ public class Person {
         return age;
     }
 
-    private void setAge(int age) {
+    private void setAge(int age) throws IncorrectAgeException {
         if (age < 1) {
             throw new IncorrectAgeException("Wiek nie może być mniejszy od 1");
         } else {
